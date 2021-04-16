@@ -1,6 +1,8 @@
 const fetch = require('node-fetch');
 const border = 0.5
 const interval = 5000
+const cryptocurrency = 'dogecoin'
+const currency = 'usd'
 require('dotenv').config();
 const accountSid = process.env.ACC_ID //your twilio key
 const authToken = process.env.ACC_TOKEN // your twilio token
@@ -8,7 +10,7 @@ const client = require('twilio')(accountSid, authToken);
 
 
 setInterval(()=>{
-    fetch('https://api.coingecko.com/api/v3/simple/price?ids=dogecoin&vs_currencies=usd').then((res)=>{
+    fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${cryptocurrency}&vs_currencies=${currency}`).then((res)=>{
         return res.json()
     }).then((data)=>{
         if (data.dogecoin.usd < border){
