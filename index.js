@@ -1,8 +1,8 @@
 const fetch = require('node-fetch');
 const border = 0.5
 const interval = 5000
-const cryptocurrency = 'dogecoin'
-const currency = 'usd'
+const cryptocurrency = 'dogecoin' //crypto to track
+const currency = 'usd' //currency in which to track
 require('dotenv').config();
 const accountSid = process.env.ACC_ID //your twilio key
 const authToken = process.env.ACC_TOKEN // your twilio token
@@ -23,7 +23,7 @@ setInterval(()=>{
 function notify(price){
     client.messages
     .create({
-        body: 'dogecoin is at ' + price,
+        body: `${cryptocurrency} is at ${price}`,
         from: '', //your twilio number
         to: '' //your number
     })
